@@ -1,0 +1,148 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@android:drawable/btn_plus" />
+
+    <EditText
+        android:id="@+id/nomeproduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/imageview"
+        android:hint="@string/nome_produto"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/precoproduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/nomeproduto"
+        android:layout_toRightOf="@id/imageview"
+        android:hint="@string/preco_produto"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/buscape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/precoproduto"
+        android:layout_toRightOf="@id/imageview"
+        android:text="@string/buscape" />
+
+    <Spinner
+        android:id="@+id/categoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/buscape"
+        android:entries="@array/itens" />
+
+    <LinearLayout
+        android:id="@+id/estabelecimento_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoria" >
+
+        <EditText
+            android:id="@+id/estabelecimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8"
+            android:hint="@string/estabelecimento"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/contatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:text="@string/contatos" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/endereco_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/estabelecimento_layout" >
+
+        <EditText
+            android:id="@+id/endereco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".9"
+            android:hint="@string/endereco"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/gps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1"
+            android:text="@string/gps" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/intervalo_preco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/endereco_layout" >
+
+        <EditText
+            android:id="@+id/precominimo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:hint="@string/preco_minimo"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/precomaximo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:hint="@string/preco_maximo"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/intervalo_preco" />
+
+    <TextView
+        android:id="@+id/aviso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intervalo_preco"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/on"
+        android:text="@string/aviso_preco" />
+
+    <Button
+        android:id="@+id/salvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/on"
+        android:text="@string/salvar" />
+
+    <Button
+        android:id="@+id/verlista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/on"
+        android:layout_alignParentRight="true"
+        android:text="@string/verlista" />
+
+</RelativeLayout>

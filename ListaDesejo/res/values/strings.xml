@@ -1,0 +1,34 @@
+<resources>
+
+    <string name="app_name">Lista de Desejo</string>
+    <string name="hello_world">Olá, Roberto</string>
+    <string name="menu_settings">Configurações</string>
+    <string name="menu_add">Adicionar</string>
+    <string name="menu_search">Pesquisar</string>
+    <string name="title_activity_main">Cadastro de Item de Desejo</string>
+    <string name="texto">Digite seu nome</string>
+    <string name="nome_produto">Nome do Produto</string>
+    <string name="preco_produto">Preço</string>
+    <string name="categoria">Categoria</string>
+    <string name="estabelecimento">Estabelecimento</string>
+    <string name="endereco">Endereço</string>
+    <string name="preco_minimo">Preço Mínimo</string>
+    <string name="preco_maximo">Preço Máximo</string>
+    <string name="buscape">Buscapé</string>
+    <string name="contatos">Contatos</string>
+    <string name="gps">GPS</string>
+    <string name="aviso_preco">Avisar sobre Preços</string>
+    <string name="novo">Novo</string>
+    <string name="salvar">Salvar</string>
+    <string name="verlista">Ver Lista de Desejos</string>
+    <string name="exibirPreco">Preço</string>
+    <string name="recarregar">Recarregar</string>
+    <string name="title_activity_main_activity2">Lista de Desejo</string>
+    
+    <string-array name="itens">
+        <item>Eletrônicos</item>
+		<item>Livros</item>
+        <item>Material para Escritório</item>
+    </string-array>
+
+</resources>

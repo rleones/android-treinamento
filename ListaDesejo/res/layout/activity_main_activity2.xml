@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
+
+    <ListView 
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".9">
+        
+    </ListView>
+    
+    <LinearLayout 
+        android:id="@+id/listview_botoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".1"
+        android:orientation="horizontal">
+	    <Button
+	        android:id="@+id/button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+        	android:text="@string/novo" />
+
+	    <Button
+	        android:id="@+id/recarregar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+        	android:text="@string/recarregar" />
+    </LinearLayout>
+
+</LinearLayout>
