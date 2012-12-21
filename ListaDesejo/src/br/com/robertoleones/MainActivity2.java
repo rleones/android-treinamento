@@ -1,18 +1,20 @@
 package br.com.robertoleones;
 
-import java.text.ChoiceFormat;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import android.R.string;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -52,35 +54,7 @@ public class MainActivity2 extends Activity {
 
 		listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1);
-		
-		adapter.add("Item 1");
-		adapter.add("Item 2");
-		adapter.add("Item 3");
- 		
-		listView.setAdapter(adapter);
-		Button button = (Button) findViewById(R.id.button);
-		Button recarregar = (Button) findViewById(R.id.recarregar);
-
-		button.setOnClickListener(new OnClickListener() {
-			public void onClick(View arg0) {
-				Intent intent = new Intent(MainActivity2.this,
-						MainActivity.class);
-
-				startActivity(intent);
-			}
-		});
-		recarregar.setOnClickListener(new OnClickListener() {
-			public void onClick(View arg0) {
-				SQLiteDatabase db = DBOpenHelper
-						.getInstance(MainActivity2.this).getReadableDatabase();
-				Cursor cursor = db.query("desejo", null, null, null, null,
-						null, null);
-				meuAdapter = new MeuAdapter(MainActivity2.this, cursor);
-
-				listView.setAdapter(meuAdapter);
-			}
-		});
+		listView.setAdapter(meuAdapter);
 	}
 
 	@Override
@@ -90,9 +64,32 @@ public class MainActivity2 extends Activity {
 	}
 
 	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.menu_add) {
+			Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+
+			startActivity(intent);
+		} else if (item.getItemId() == R.id.menu_search) {
+			SQLiteDatabase db = DBOpenHelper.getInstance(MainActivity2.this)
+					.getReadableDatabase();
+			Cursor cursor = db.query("desejo", null, null, null, null, null,
+					null);
+			meuAdapter = new MeuAdapter(MainActivity2.this, cursor);
+
+			listView.setAdapter(meuAdapter);
+		} else if (item.getItemId() == R.id.menu_settings) {
+			Toast.makeText(this, "Não há configurações disponíveis.",
+					Toast.LENGTH_SHORT).show();
+		}
+
+		return true;
+	}
+
+	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		if (item.getItemId() == R.id.menu_delete){
-			Toast.makeText(this, "Removeu: " + selected, Toast.LENGTH_LONG).show();
+		if (item.getItemId() == R.id.menu_delete) {
+			Toast.makeText(this, "Removeu: " + selected, Toast.LENGTH_LONG)
+					.show();
 		}
 		return true;
 	}
@@ -107,5 +104,5 @@ public class MainActivity2 extends Activity {
 	public void openContextMenu(View view) {
 		super.openContextMenu(view);
 	}
-	
+
 }

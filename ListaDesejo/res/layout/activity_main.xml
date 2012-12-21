@@ -28,7 +28,7 @@
         android:layout_below="@id/nomeproduto"
         android:layout_toRightOf="@id/imageview"
         android:hint="@string/preco_produto"
-        android:inputType="text" />
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/buscape"

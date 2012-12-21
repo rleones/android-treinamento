@@ -1,15 +1,22 @@
 package br.com.robertoleones;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,16 +28,16 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		Button btnSalvar = (Button) findViewById(R.id.salvar);
-
+		Button buscape = (Button) findViewById(R.id.buscape);
 		Button btnListar = (Button) findViewById(R.id.verlista);
+		final EditText nomeProduto = (EditText) findViewById(R.id.nomeproduto);
+		final EditText precoProduto = (EditText) findViewById(R.id.precoproduto);
 
 		btnSalvar.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {
 				SQLiteDatabase db = DBOpenHelper.getInstance(MainActivity.this)
 						.getWritableDatabase();
 
-				EditText editText = (EditText) findViewById(R.id.nomeproduto);
-				EditText precoproduto = (EditText) findViewById(R.id.precoproduto);
 				Spinner categoria = (Spinner) findViewById(R.id.categoria);
 				EditText estabelecimento = (EditText) findViewById(R.id.estabelecimento);
 				EditText endereco = (EditText) findViewById(R.id.endereco);
@@ -40,8 +47,8 @@ public class MainActivity extends Activity {
 
 				ContentValues values = new ContentValues();
 
-				values.put("nome", editText.getText().toString());
-				values.put("valor", precoproduto.getText().toString());
+				values.put("nome", nomeProduto.getText().toString());
+				values.put("valor", precoProduto.getText().toString());
 				values.put("categoria", categoria.getSelectedItem().toString());
 				values.put("estabelecimento", estabelecimento.getText()
 						.toString());
@@ -61,36 +68,16 @@ public class MainActivity extends Activity {
 				finish();
 			}
 		});
-	}
 
-	@Override
-	protected void onStart() {
-		super.onStart();
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
-
-	@Override
-	protected void onRestart() {
-		super.onRestart();
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
+		buscape.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, ListaSelecaoActivity.class);
+				
+				intent.putExtra("NOME_PRODUTO", nomeProduto.getText().toString());
+				
+				startActivity(intent);
+			}
+		});
 	}
 
 }
