@@ -33,5 +33,6 @@
     </string-array>
 
     <string name="title_activity_lista_selecao">Itens Encontrados</string>
+    <string name="title_activity_main_aula2">MainAula2Activity</string>
 
 </resources>
